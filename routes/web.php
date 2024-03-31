@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PacientesController;
+use App\Http\Controllers\ServiciosController;
+use App\Http\Controllers\TratamientosController;
+
 Route::get('/', function () {
     $page_title = "Inicio";
     return view('welcome', compact('page_title'));
@@ -31,3 +35,7 @@ Route::get('/rodilla', function () {
     $page_title = "Rodilla";
     return view('rodilla', compact('page_title'));
 }) -> name('rodilla');
+
+Route::resource('pacientes', PacientesController::class);
+Route::resource('servicios', ServiciosController::class);
+Route::resource('tratamientos', TratamientosController::class);
