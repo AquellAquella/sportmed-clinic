@@ -12,6 +12,8 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <link rel="shortcut icon" type="image/png" href="{{ asset('/img/favicon_192x192.png') }}">
+    <link rel="shortcut icon" sizes="192x192" href="{{ asset('/images/sportmed-clinic-logo.png') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
