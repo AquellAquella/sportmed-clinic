@@ -21,7 +21,9 @@ class PacientesController extends Controller
      */
     public function create()
     {
-        //
+        $page_title = "Crear nuevo paciente";
+        
+        return view('pacientes.create', compact('page_title'));
     }
 
     /**

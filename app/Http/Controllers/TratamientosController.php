@@ -22,7 +22,9 @@ class TratamientosController extends Controller
      */
     public function create()
     {
-        //
+        $page_title = "Crear nuevo tratamiento";
+        
+        return view('tratamientos.create', compact('page_title'));
     }
 
     /**
