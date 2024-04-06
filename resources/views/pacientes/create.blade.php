@@ -31,8 +31,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="enfermedades" class="form-label">Enfermedades personales patológicas *</label><br>
-                        <textarea name="enfermedades"  class="form-control form-control-lg" cols="50" rows="5"></textarea>
+                        <label for="enfPersPat" class="form-label">Enfermedades personales patológicas *</label><br>
+                        <textarea name="enfPersPat"  class="form-control form-control-lg" cols="50" rows="5"></textarea>
                     </div>
 
                     <div class="mb-3">
@@ -41,15 +41,15 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="nopatologicas" class="form-label">Enfermedades personales no patológicas *</label><br>
-                        <textarea name="nopatologicas"  class="form-control form-control-lg" cols="50" rows="5"></textarea>
+                        <label for="enfPersNoPat" class="form-label">Enfermedades personales no patológicas *</label><br>
+                        <textarea name="enfPersNoPat"  class="form-control form-control-lg" cols="50" rows="5"></textarea>
                     </div>
 
                     <h3 class="p-3">Antecedentes familiares</h3>
 
                     <div class="mb-3">
-                        <label for="sexoPadre" class="form-label">Estado del padre *</label><br>
-                        <select name="sexoPadre" class="form-control form-control-lg">
+                        <label for="estatusPadre" class="form-label">Estado del padre *</label><br>
+                        <select name="estatusPadre" class="form-control form-control-lg">
                             <option value="Vivo">Vivo</option>
                             <option value="Fallecido">Fallecido</option>
                             <option value="Desconocido">Desconocido</option>
@@ -57,13 +57,13 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="antPadres" class="form-label">Enfermedades que padece el padre</label><br>
-                        <textarea name="antPadres"  class="form-control form-control-lg" cols="50" rows="3"></textarea>
+                        <label for="enfPadre" class="form-label">Enfermedades que padece el padre</label><br>
+                        <textarea name="enfPadre"  class="form-control form-control-lg" cols="50" rows="3"></textarea>
                     </div>
 
                     <div class="mb-3">
-                        <label for="sexoMadre" class="form-label">Estado de la madre *</label><br>
-                        <select name="sexoMadre" class="form-control form-control-lg">
+                        <label for="estatusMadre" class="form-label">Estado de la madre *</label><br>
+                        <select name="estatusMadre" class="form-control form-control-lg">
                             <option value="Vivo">Viva</option>
                             <option value="Fallecida">Fallecida</option>
                             <option value="Desconocida">Desconocida</option>
@@ -71,8 +71,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="antMadres" class="form-label">Enfermedades que padece la madre</label><br>
-                        <textarea name="antMadres"  class="form-control form-control-lg" cols="50" rows="3"></textarea>
+                        <label for="enfMadre" class="form-label">Enfermedades que padece la madre</label><br>
+                        <textarea name="enfMadre"  class="form-control form-control-lg" cols="50" rows="3"></textarea>
                     </div>
 
                     <br>

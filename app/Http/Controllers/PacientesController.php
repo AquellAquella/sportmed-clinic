@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\pacientes;
+use App\Models\servicios;
+use App\Models\tratamiento;
+
 use Illuminate\Http\Request;
 
 class PacientesController extends Controller
@@ -12,8 +16,9 @@ class PacientesController extends Controller
     public function index()
     {
         $page_title = "Pacientes";
-        
-        return view('pacientes.index', compact('page_title'));
+        $pacientes = pacientes::where('activo', 1)->get();
+
+        return view('pacientes.index', compact('page_title', 'pacientes'));
     }
 
     /**
@@ -31,7 +36,21 @@ class PacientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        pacientes::create([
+            'nombre'=> $request->nombre,
+            'edad'=> $request->edad,
+            'sexo'=> $request->sexo,
+            'enfPersPat'=> $request->enfPersPat,
+            'medicamentos'=> $request->medicamentos,
+            'enfPersNoPat'=> $request->enfPersNoPat,
+            'estatusPadre'=> $request->estatusPadre,
+            'enfPadre'=> $request->enfPadre,
+            'estatusMadre'=> $request->estatusMadre,
+            'enfMadre'=> $request->enfMadre,
+            'activo'=> 1,
+        ]);
+
+        return redirect()->route('pacientes.index');
     }
 
     /**
@@ -39,7 +58,12 @@ class PacientesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pacientes = pacientes::where('id', $id)
+        ->select('id','nombre','edad','sexo','enfPersPat','medicamentos','enfPersNoPat','estatusPadre','enfPadre','estatusMadre','enfMadre')
+        ->firstOrFail();
+
+        $page_title = 'Editar historial clínico del paciente';
+        return view('pacientes.show', compact('page_title','pacientes'));
     }
 
     /**
@@ -47,7 +71,12 @@ class PacientesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $paciente = pacientes::where('id', $id)
+        ->select('id','nombre','edad','sexo','enfPersPat','medicamentos','enfPersNoPat','estatusPadre','enfPadre','estatusMadre','enfMadre')
+        ->firstOrFail();
+
+        $page_title = 'Editar historial clínico del paciente';
+        return view('pacientes.edit', compact('page_title','paciente'));
     }
 
     /**
@@ -55,7 +84,24 @@ class PacientesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $paciente = pacientes::where('id', $id)
+        ->select('id','nombre','edad','sexo','enfPersPat','medicamentos','enfPersNoPat','estatusPadre','enfPadre','estatusMadre','enfMadre')
+        ->firstOrFail();
+        
+        $paciente->update([
+            'nombre' => $request->nombre,
+            'edad' => $request->edad,
+            'sexo' => $request->sexo,
+            'enfPersPat' => $request->enfPersPat,
+            'medicamentos' => $request->medicamentos,
+            'enfPersNoPat' => $request->enfPersNoPat,
+            'estatusPadre' => $request->estatusPadre,
+            'enfPadre' => $request->enfPadre,
+            'estatusMadre' => $request->estatusMadre,
+            'enfMadre' => $request->enfMadre
+        ]);
+
+        return redirect()->route('pacientes.show', $id);
     }
 
     /**
@@ -63,6 +109,14 @@ class PacientesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $paciente = pacientes::where('id', $id)
+        ->select('id','nombre','edad','sexo','enfPersPat','medicamentos','enfPersNoPat','estatusPadre','enfPadre','estatusMadre','enfMadre')
+        ->firstOrFail();
+
+        $paciente->update([
+            'activo' => 0,
+        ]);
+
+        return redirect()->route('pacientes.index');
     }
 }

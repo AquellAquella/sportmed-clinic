@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-9 col-lg-6 text-start">
 
-                <form action="{{  route('pacientes.store') }}" method="post">
+                <form action="{{  route('tratamientos.store') }}" method="post">
                     @csrf
                     
                     <div class="mb-3">
@@ -17,12 +17,12 @@
                     <div class="mb-3">
                         <label for="categoria" class="form-label">Categoría *</label><br>
                         <select name="categoria" class="form-control form-control-lg">
-                            <option value="HC">Hombro - Cervical</option>
-                            <option value="CL">Cadera - Lumbar</option>
-                            <option value="M">Muslo</option>
-                            <option value="R">Rodilla</option>
-                            <option value="M">Tobillo</option>
-                            <option value="O">Otros</option>
+                            <option value=1>Hombro - Cervical</option>
+                            <option value=2>Cadera - Lumbar</option>
+                            <option value=3>Muslo</option>
+                            <option value=4>Rodilla</option>
+                            <option value=5>Tobillo</option>
+                            <option value=6>Otros</option>
                         </select>
                     </div>
 
