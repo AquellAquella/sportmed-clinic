@@ -88,14 +88,14 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-6 text-end">
-                <a href="{{ route('pacientes.edit', $pacientes->id) }}" class="btn btn-warning btn-lg btn-block">Edit Parent</a>
+                <a href="{{ route('pacientes.edit', $pacientes->id) }}" class="btn btn-warning btn-lg btn-block">Editar expediente clínico</a>
             </div>
             <div class="col-6 text-start">
                 <form action="{{ route('pacientes.destroy', $pacientes->id) }}" method="post">
                     @method('delete')
                     @csrf
 
-                    <button class="btn btn-danger btn-lg btn-block" type="submit" onclick="return confirm ('¿Estás seguro de que quieres eliminar el expediente médico del paciente?')">Delete Parent</button>
+                    <button class="btn btn-danger btn-lg btn-block" type="submit" onclick="return confirm ('¿Estás seguro de que quieres eliminar el expediente médico del paciente?')">Eliminar expediente clínico</button>
                 </form>
             </div>
         </div>
