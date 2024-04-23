@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('servicios', function (Blueprint $table) {
             $table->id();
+            $table->date("fecha");
+            $table->time("horario");
+            $table->string('paciente_nombre');
+            $table->longText('direccion');
+            $table->string('ciudad');
+            $table->string('estado');
+            $table->string('mail');
+            $table->boolean('activo');
             $table->timestamps();
         });
     }

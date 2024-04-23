@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\pacientes;
+use App\Models\servicios;
+use App\Models\tratamiento;
+
 use Illuminate\Http\Request;
 
 class ServiciosController extends Controller
@@ -12,8 +16,9 @@ class ServiciosController extends Controller
     public function index()
     {
         $page_title = "Servicios";
-        
-        return view('servicios.index', compact('page_title'));
+        $servicios = servicios::where('activo', 1)->get();
+
+        return view('servicios.index', compact('page_title','servicios'));
     }
 
     /**
@@ -21,15 +26,28 @@ class ServiciosController extends Controller
      */
     public function create()
     {
-        //
+        $page_title = "Crear nueva cita médica";
+        $pacientes = pacientes::where('activo',1)->get();
+        return view('servicios.create', compact('page_title', 'pacientes'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        servicios::create([
+            'fecha'=>$request->fecha,
+            'horario'=>$request->horario,
+            'paciente_nombre'=>$request->paciente_nombre,
+            'direccion'=>$request->direccion,
+            'ciudad'=>$request->ciudad,
+            'estado'=>$request->estado,
+            'mail'=>$request->mail,
+            'activo'=>1,
+        ]);
+
+        return redirect()->route('servicios.index');
     }
 
     /**
@@ -37,7 +55,12 @@ class ServiciosController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $servicios = servicios::where('id', $id)
+        ->select('id','fecha','horario','paciente_nombre','direccion','ciudad','estado','mail')
+        ->firstOrFail();
+
+        $page_title = "Editar cita del paciente";
+        return view('servicios.show', compact('page_title','servicios'));
     }
 
     /**
@@ -45,7 +68,14 @@ class ServiciosController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $servicios = servicios::where('id', $id)
+        ->select('id','fecha','horario','paciente_nombre','direccion','ciudad','estado','mail')
+        ->firstOrFail();
+
+        $pacientes = pacientes::where('activo',1)->get();
+
+        $page_title = "Editar cita del paciente";
+        return view('servicios.edit', compact('page_title','servicios','pacientes'));
     }
 
     /**
@@ -53,7 +83,21 @@ class ServiciosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $servicio = servicios::where('id', $id)
+        ->select('id','fecha','horario','paciente_nombre','direccion','ciudad','estado','mail')
+        ->firstOrFail();
+
+        $servicio->update([
+            'fecha'=>$request->fecha,
+            'horario'=>$request->horario,
+            'paciente_nombre'=>$request->paciente_nombre,
+            'direccion'=>$request->direccion,
+            'ciudad'=>$request->ciudad,
+            'estado'=>$request->estado,
+            'mail'=>$request->mail,
+        ]);
+
+        return redirect()->route('servicios.show', $id);
     }
 
     /**
@@ -61,6 +105,14 @@ class ServiciosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $servicio = servicios::where('id', $id)
+        ->select('id','fecha','horario','paciente_nombre','direccion','ciudad','estado','mail')
+        ->firstOrFail();
+
+        $servicio->update([
+            'activo'=>0,
+        ]);
+
+        return redirect()->route('servicios.index');
     }
 }
