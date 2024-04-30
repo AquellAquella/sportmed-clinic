@@ -81,7 +81,7 @@
 
                     <br>
                     <div class="text-end">
-                        <button type="submit" class="btn btn-primary btn-lg">Guardar paciente</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Guardar cita médica</button>
                     </div>
                     
                 </form>
